@@ -1,0 +1,11 @@
+groups:
+- name: tidb_alert_sample
+  rules:
+  - alert: TooManyTiDBServerConnection
+    expr: max_over_time(tidb_server_connections[5m]) > 100
+    for: 5m
+    keep_firing_for: 5m
+    labels:
+      severity: page
+    annotations:
+      summary: Too many TiDB server connections to { $labels.instance }

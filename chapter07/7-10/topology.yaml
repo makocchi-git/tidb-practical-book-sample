@@ -1,0 +1,53 @@
+global:
+  # # The OS user who runs the tidb cluster.
+  user: "tidb"
+  # # systemd_mode is used to select whether to use sudo permissions.
+  systemd_mode: "system"
+  # # SSH port of servers in the managed cluster.
+  ssh_port: 22
+  # # Storage directory for cluster deployment files, startup scripts, and configuration files.
+  deploy_dir: "/tidb-deploy"
+  # # TiDB Cluster data storage directory
+  data_dir: "/tidb-data"
+  # # Supported values: "amd64", "arm64" (default: "amd64")
+  arch: "amd64"
+
+pd_servers:
+  - host: 10.0.0.11
+  - host: 10.0.0.12
+  - host: 10.0.0.13
+
+tidb_servers:
+  - host: 10.0.0.21
+  - host: 10.0.0.22
+
+tikv_servers:
+  - host: 10.0.0.31
+  - host: 10.0.0.32
+  - host: 10.0.0.33
+
+monitoring_servers:
+  - host: 10.0.0.41
+    # rule_dir: /home/tidb/prometheus_rule
+    # additional_scrape_conf:
+    #   metric_relabel_configs:
+    #     - source_labels: [__name__]
+    #         regex: tikv_thread_nonvoluntary_context_switches|tikv_thread_voluntary_context_switches
+    #         action: drop
+    # storage_retention: 15d
+    # additional_args:
+    #   - --web.enable-lifecycle
+
+grafana_servers:
+  - host: 10.0.0.41
+    # username: new_admin
+    # password: new_password
+    # anonymous_enable: true
+    # config:
+    #   log.file.level: warning
+    #   log.file.format: json
+    # dashboard_dir: /home/tidb/grafana_dashboard
+
+# alertmanager_servers:
+#   - host: 10.0.0.41
+#     config_file: /home/tidb/alertmanager_config/alertmanager_slack.yaml

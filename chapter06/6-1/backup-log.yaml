@@ -1,0 +1,20 @@
+apiVersion: pingcap.com/v1alpha1
+kind: Backup
+metadata:
+  name: tidb-sample-backup-log
+spec:
+  backupMode: log
+  # logTruncateUntil: "454623537343758337"
+  cleanPolicy: OnFailure
+  serviceAccount: tidb-backup-manager
+  br:
+    cluster: tidb-sample
+    clusterNamespace: default
+    logLevel: info
+    sendCredToTikv: true
+  s3:
+    provider: aws
+    region: ap-northeast-1
+    bucket: tidb-book-sample
+    prefix: k8s/log_backup/cluster/tidb-sample
+    secretName: aws-secret

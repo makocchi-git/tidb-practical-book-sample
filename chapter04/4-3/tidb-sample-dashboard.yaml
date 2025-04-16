@@ -1,0 +1,14 @@
+apiVersion: pingcap.com/v1alpha1
+kind: TidbDashboard
+metadata:
+  name: tidb-sample-dashboard
+spec:
+  baseImage: pingcap/tidb-dashboard
+  version: v8.5.0
+  clusters:
+    - name: tidb-sample
+  requests:
+    storage: 1Gi
+  # service:
+  #   type: NodePort
+  #   type: LoadBalancer

@@ -1,0 +1,2 @@
+[instance]
+tidb_stmt_summary_enable_persistent = true

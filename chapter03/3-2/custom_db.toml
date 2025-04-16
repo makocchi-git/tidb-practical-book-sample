@@ -1,0 +1,4 @@
+server-version = "This is a TiDB Book"
+
+[log]
+format = "json"

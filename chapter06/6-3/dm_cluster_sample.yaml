@@ -1,0 +1,18 @@
+apiVersion: pingcap.com/v1alpha1
+kind: DMCluster
+metadata:
+  name: dm-sample
+spec:
+  version: v8.5.0
+  master:
+    baseImage: pingcap/dm
+    replicas: 1
+    storageSize: "10Gi"
+    service:
+      type: NodePort
+    # config: |
+    #   openapi = true
+  worker:
+    baseImage: pingcap/dm
+    replicas: 1
+    storageSize: "10Gi"

@@ -1,0 +1,2 @@
+[instance]
+tidb_enable_slow_log = false

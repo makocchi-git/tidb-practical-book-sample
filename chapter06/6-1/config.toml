@@ -1,0 +1,15 @@
+[lightning]
+level = "info"
+
+[mydumper]
+data-source-dir = "./bookshop_export"
+
+[tikv-importer]
+backend = "local"
+sorted-kv-dir = "/tmp/sorted-kv-dir"
+
+[tidb]
+host = "127.0.0.1"
+port = 4000
+user = "root"
+password = ""

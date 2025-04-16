@@ -1,0 +1,26 @@
+export-fix-sql = true
+
+[data-sources]
+[data-sources.mysql]
+    host = "127.0.0.1"
+    port = 3306
+    user = "root"
+    password = ""
+    route-rules = ["bookshop-rule"]
+
+[data-sources.tidb]
+    host = "127.0.0.1"
+    port = 4000
+    user = "root"
+    password = ""
+
+[routes]
+[routes.bookshop-rule]
+schema-pattern = "bookshop"
+target-schema = "bookshop"
+
+[task]
+    output-dir = "./output"
+    source-instances = ["mysql"]
+    target-instance = "tidb"
+    target-check-tables = ["bookshop.authors", "bookshop.books"]

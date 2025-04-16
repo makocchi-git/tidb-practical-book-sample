@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+  name: tidb-sample-tiproxy-lb
+spec:
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/component: tiproxy
+    app.kubernetes.io/instance: tidb-sample
+  ports:
+  - name: tiproxy-api
+    port: 3080
+    protocol: TCP
+    targetPort: 3080
+  - name: tiproxy-sql
+    port: 6000
+    protocol: TCP
+    targetPort: 6000
