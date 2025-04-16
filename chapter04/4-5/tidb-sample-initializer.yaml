@@ -1,0 +1,12 @@
+apiVersion: pingcap.com/v1alpha1
+kind: TidbInitializer
+metadata:
+  name: tidb-sample-initializer
+spec:
+  image: tnir/mysqlclient
+  cluster:
+    name: tidb-sample
+  initSql: |-
+    CREATE DATABASE app;
+    GRANT ALL PRIVILEGES ON app.* TO 'developer'@'%';
+  passwordSecret: tidb-sample-secret

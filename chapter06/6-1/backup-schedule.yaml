@@ -1,0 +1,23 @@
+apiVersion: pingcap.com/v1alpha1
+kind: BackupSchedule
+metadata:
+  name: tidb-sample-schedule-backup
+spec:
+  schedule: "0 * * * *"
+  maxBackups: 5
+  backupTemplate:
+    backupType: full
+    backupMode: snapshot
+    cleanPolicy: OnFailure
+    serviceAccount: tidb-backup-manager
+    br:
+      cluster: tidb-sample
+      clusterNamespace: default
+      logLevel: info
+      sendCredToTikv: true
+    s3:
+      provider: aws
+      region: ap-northeast-1
+      bucket: tidb-book-sample
+      prefix: k8s/schedule-backup/cluster/tidb-sample
+      secretName: aws-secret

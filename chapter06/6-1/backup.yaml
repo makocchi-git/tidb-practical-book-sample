@@ -1,0 +1,30 @@
+apiVersion: pingcap.com/v1alpha1
+kind: Backup
+metadata:
+  name: tidb-sample-backup
+spec:
+  backupType: full
+  # backupType: db
+  # backupType: table
+  backupMode: snapshot
+  cleanPolicy: OnFailure
+  serviceAccount: tidb-backup-manager
+  # tableFilter:
+  #   - "test.*"
+  #   - "test.sample"
+  #
+  #   - "*.*"
+  #   - "!test.sample"
+  br:
+    cluster: tidb-sample
+    clusterNamespace: default
+    logLevel: info
+    sendCredToTikv: true
+    # db: test
+    # table: sample
+  s3:
+    provider: aws
+    region: ap-northeast-1
+    bucket: tidb-book-sample
+    prefix: k8s/backup/cluster/tidb-sample
+    secretName: aws-secret

@@ -1,0 +1,12 @@
+apiVersion: pingcap.com/v1alpha1
+kind: TidbNGMonitoring
+metadata:
+  name: tidb-sample-ngmonitoring
+spec:
+  clusters:
+  - name: tidb-sample
+  ngMonitoring:
+    baseImage: pingcap/ng-monitoring
+    version: v8.5.0
+    requests:
+      storage: 10Gi

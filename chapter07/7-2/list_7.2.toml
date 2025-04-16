@@ -1,0 +1,5 @@
+[in-memory-engine]
+enable = true
+capacity = "5GiB"
+gc-run-interval = "3m"
+mvcc-amplification-threshold = 10

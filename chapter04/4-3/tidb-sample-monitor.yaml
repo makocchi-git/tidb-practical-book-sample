@@ -1,0 +1,32 @@
+apiVersion: pingcap.com/v1alpha1
+kind: TidbMonitor
+metadata:
+  name: tidb-sample-monitor
+spec:
+  clusters:
+    - name: tidb-sample
+    # - name: tidb-sample2
+    #   namespace: other
+  # persistent: true
+  # storageClassName: standard
+  # storage: 10Gi
+  prometheus:
+    baseImage: prom/prometheus
+    version: v2.27.1
+  grafana:
+    baseImage: grafana/grafana
+    version: 7.5.11
+    # service:
+    #   type: LoadBalancer
+    # envs:
+    #   GF_SECURITY_ADMIN_USER: newadmin
+    #   GF_SECURITY_ADMIN_PASSWORD: newpassword
+  initializer:
+    baseImage: pingcap/tidb-monitor-initializer
+    version: v8.5.0
+  reloader:
+    baseImage: pingcap/tidb-monitor-reloader
+    version: v1.0.1
+  # prometheusReloader:
+  #   baseImage: quay.io/prometheus-operator/prometheus-config-reloader
+  #   version: v0.49.0
