@@ -33,3 +33,12 @@ SET GLOBAL tidb_stmt_summary_refresh_interval = 3600;
 --
 SHOW GLOBAL VARIABLES LIKE 'tidb_stmt_summary_enable_persistent';
 
+--
+-- Disable slow query log
+--
+SET GLOBAL tidb_enable_slow_log = false;
+
+--
+-- Modify slow query log threshold (default 300)
+--
+SET GLOBAL tidb_slow_log_threshold = 1000;

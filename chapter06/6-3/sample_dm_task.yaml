@@ -1,0 +1,16 @@
+name: sample
+task-mode: all
+
+target-database:
+  host: "127.0.0.1"
+  port: 4000
+  user: "root"
+  password: ""
+
+mysql-instances:
+  - source-id: "docker-mysql"
+    block-allow-list:  "ba-rule1"
+
+block-allow-list:
+  ba-rule1:
+    do-dbs: ["bookshop"]
