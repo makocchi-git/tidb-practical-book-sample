@@ -10,9 +10,8 @@
 
 ## Links
 
-書籍サイト(技術評論社 gihyo.jp)
-
-TBD
+書籍サイト(技術評論社 gihyo.jp)  
+https://gihyo.jp/book/2025/978-4-297-14832-4
 
 ## 内容
 
