@@ -1,0 +1,52 @@
+apiVersion: pingcap.com/v1alpha1
+kind: TidbCluster
+metadata:
+  name: tidb-sample
+spec:
+  version: v8.5.0
+  # version: v8.5.1
+  timezone: UTC
+  pd:
+    baseImage: pingcap/pd
+    replicas: 1
+    # replicas: 3
+    requests:
+      storage: "1Gi"
+    config: {}
+  tikv:
+    baseImage: pingcap/tikv
+    replicas: 1
+    # replicas: 3
+    requests:
+      storage: "1Gi"
+    config: {}
+    # fix issue https://github.com/pingcap/tidb-operator/issues/5372
+    env:
+      - name: GRPC_DNS_RESOLVER
+        value: native
+  tidb:
+    baseImage: pingcap/tidb
+    replicas: 1
+    # replicas: 3
+    service:
+      type: ClusterIP
+      # type: LoadBalancer
+      # type: NodePort
+    config: {}
+    # config: |
+    #   graceful-wait-before-shutdown = 30
+    # requests:
+    #   cpu: 1000m
+    #   memory: 256Mi
+  # tiproxy:
+  #   version: v1.3.0
+  #   replicas: 2
+  #   config: {}
+  # tiflash:
+  #   replicas: 1
+  #   config: {}
+  #   storageClaims:
+  #     - resources:
+  #         requests:
+  #           storage: 10Gi
+  #       storageClassName: standard
